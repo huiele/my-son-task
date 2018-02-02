@@ -1,0 +1,51 @@
+{% extends layout.html %}
+
+{% block header %}
+
+<link rel="stylesheet" href="{{ static_url("css/webuploader.css")}}">
+<link rel="stylesheet" href="{{ static_url("css/uploader.css")}}">
+{% end %}
+
+
+{% block content %}
+<header class="am-topbar am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand">
+            <a href="/">相似图片搜索</a>
+        </h1>
+    </div>
+</header>
+<div class="am-container">
+    <div id="uploader" class="wu-example">
+    <div class="queueList">
+        <div id="dndArea" class="placeholder">
+            <div id="filePicker"></div>
+            <p>或将照片拖到这里，单次最多可选40张</p>
+        </div>
+    </div>
+    <div class="statusBar" style="display:none;">
+        <div class="progress">
+            <span class="text">0%</span>
+            <span class="percentage"></span>
+        </div><div class="info"></div>
+        <div class="btns">
+            <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+        </div>
+    </div>
+</div>
+</div>
+{% end %}
+
+{% block footer %}
+
+{% end %}
+
+{% block js %}
+<script type="text/javascript">
+    var swf_url = window.location.host + "{{ static_url("js/Uploader.swf")}}";
+    console.log(swf_url);
+</script>
+<script type="text/javascript" src="{{ static_url("js/webuploader.min.js") }}"></script>
+
+<script type="text/javascript" src="{{ static_url("js/uploader.js") }}"></script>
+{% end %}

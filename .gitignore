@@ -1,0 +1,36 @@
+# os generated files
+.DS_Store
+ehthumbs.db
+Icon
+Thumbs.db
+.tmtags
+.idea
+tags
+vendor.tags
+tmtagsHistory
+*.sublime-project
+*.sublime-workspace
+.bundle
+
+# Compiled source
+*.pyc
+
+# log and database
+*.log
+*.sqlite
+
+# upload image file
+search_app/images/
+venv/
+
+# pipenv
+Pipfile
+Pipfile.lock
+
+# image_match pytest
+rotated_test1.jpg
+test.jpg
+test1.jpg
+test2.jpg
+.cache/
+image_search.egg-info/

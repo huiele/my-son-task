@@ -1,0 +1,72 @@
+{% extends layout.html %}
+
+{% block header %}
+<title>检索结果</title>
+{% end %}
+
+
+{% block content %}
+<header class="am-topbar am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand">
+            <a href="/">相似图片搜索</a>
+        </h1>
+
+    </div>
+</header>
+<div class="am-g am-g am-container">
+    <div class="am-g am-center">
+        <br/>
+        <div class="am-u-sm-4">
+            <img src="/images/{{ image }}" height="240px" width="auto" class="am-img-responsive am-img-thumbnail am-radius">
+        </div>
+
+        <div class="am-u-sm-8">
+            <div class="am-vertical-align" style="height: 150px;">
+                <div class="am-vertical-align-middle am-sm-only-text-justify">
+
+                    <p class="am-sans-serif">
+                        <label>
+                            图片名称&nbsp;:&nbsp;
+                        </label>{{ image_data["filename"] }}</p>
+                    <p class="am-sans-serif"><label>图片类型&nbsp;:&nbsp;</label>{{ image_data["content_type"] }}</p>
+                 <p class="am-sans-serif">总共搜索出{{ image_data['num'] }}张图片，其中{{ image_data['num_1'] }}张相同图片，{{ image_data['num_2'] }}近似图片.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="am-g am-center">
+        {% if images_list %}
+
+        <ul data-am-widget="gallery" class="am-thumbnails am-gallery am-avg-sm-8 am-gallery-imgbordered"
+            data-am-gallery="{pureview: 1}">
+
+            {% for item in images_list %}
+            <li>
+                <div class="am-gallery-item">
+                    <img class="am-thumbnail am-img-responsive am-radius" src="/images/{{ item['_id'] }}" data-rel="/images/{{ item['_id'] }}"/>
+                    <div class="am-gallery-desc">
+                        <p><label>图片名称：</label>{{ item['filename'] }}</p>
+                        <p><label>匹配度:</label>{{ item['dist'] }}</p>
+                    </div>
+                </div>
+            </li>
+            {% end %}
+        </ul>
+
+        {% else %}
+        <br/>
+        <div class="am-lg-text-left am-md-text-left am-sm-only-text-center">
+            <p> Sorry,未找到相似图片! </p>
+            <p><a href="/">返回继续搜索！</a></p>
+        </div>
+        {% end %}
+    </div>
+</div>
+{% end %}
+
+{% block js %}
+
+{% end %}

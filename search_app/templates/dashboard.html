@@ -1,0 +1,106 @@
+{% extends layout.html %}
+
+{% block header %}
+
+<title> 相似搜索 </title>
+<style>
+    .title {
+        text-align: center;
+    }
+
+    .title h1 {
+        font-size: 200%;
+        color: #333333;
+        margin-top: 25%;
+    }
+</style>
+{% end %}
+
+{% block content %}
+<header class="am-topbar am-topbar-fixed-top">
+    <div class="am-container">
+        <h1 class="am-topbar-brand">
+            <a href="/">相似图片搜索</a>
+        </h1>
+        <div class="am-topbar-right">
+            <a href="/uploads" class="am-btn am-topbar-btn am-btn-sm"><i class="am-icon-database"></i>上传图像数据</a>
+        </div>
+    </div>
+</header>
+<div class="am-container">
+    <div class="am-u-sm-8 am-u-sm-centered">
+        <div class="title">
+            <h1> 图片搜索 </h1>
+            <br/>
+        </div>
+    </div>
+
+<div class="am-g">
+    <div class="am-u-sm-4 am-u-sm-offset-2">
+        <form method="post" class="am-form am-form-inline" enctype="multipart/form-data" action="/search">
+            <fieldset>
+
+                <div class="am-form-group am-form-file">
+
+
+                    <button type="button" class="am-btn am-btn-sm">
+                        <i class="am-icon-upload"></i>
+                        选择需要查询的图片
+                    </button>
+                    <input type="file" id="upload_file" name="image_file">
+
+                </div>
+                <div class="am-form-group">
+                    <button type="submit" class="am-btn am-btn-sm">
+                        <i class="am-icon-search"></i>
+                        查询
+                    </button>
+
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+<div class="am-g">
+    <div class="am-u-sm-8 am-u-sm-offset-2">
+        <img id="preview" class=""/>
+    </div>
+</div>
+    </div>
+{% end %}
+
+{% block footer %}
+
+{% end %}
+
+{% block js %}
+
+<script type="text/javascript" >
+    document.querySelector('#upload_file')
+        .addEventListener('change', function () {
+            // 没有选择图片，清除预览
+            if (this.files.length === 0) {
+                document.querySelector('#upload_file').src = '';
+                document.querySelector('#preview').classList.remove('am-img-responsive');
+                document.querySelector('#preview').classList.remove('am-img-thumbnail');
+                document.querySelector('#preview').classList.remove('am-radius');
+                return;
+            }
+
+            // 实例化一个FileReader
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                // 当reader加载时，将图片的内容赋值给
+                document.querySelector('#preview').src = e.target.result;
+                document.querySelector('#preview').classList.add('am-img-responsive');
+                document.querySelector('#preview').classList.add('am-img-thumbnail');
+                document.querySelector('#preview').classList.add('am-radius');
+            };
+
+            // 读取选择的图片，并转换成dataURL格式
+            reader.readAsDataURL(this.files[0]);
+        }, false);
+</script>
+{% end %}

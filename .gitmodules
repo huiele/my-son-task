@@ -1,0 +1,3 @@
+[submodule "image_match"]
+	path = image_match
+	url = https://github.com/ascribe/image-match.git
