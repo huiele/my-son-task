@@ -15,7 +15,7 @@ greenlet==0.4.12
 idna==2.6
 image-match==1.1.2
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 locustio==0.8.1
 MarkupSafe==1.0
 matplotlib==2.1.1
